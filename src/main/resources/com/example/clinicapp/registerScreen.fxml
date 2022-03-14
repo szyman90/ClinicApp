@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.clinicapp.RegisterController">
+   <children>
+      <Label layoutX="767.0" layoutY="162.0" text="First Name">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label layoutX="768.0" layoutY="240.0" text="Last Name">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label layoutX="810.0" layoutY="315.0" text="Pesel">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label layoutX="804.0" layoutY="390.0" text="Street">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label layoutX="730.0" layoutY="470.0" text="House Number">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label layoutX="670.0" layoutY="547.0" text="Flat Number (optional)">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label layoutX="802.0" layoutY="615.0" text="e-mail">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label layoutX="777.0" layoutY="690.0" text="password">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label layoutX="709.0" layoutY="765.0" text="Confirm password">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <PasswordField layoutX="870.0" layoutY="675.0" prefHeight="50.0" prefWidth="350.0"  fx:id="confirmPasswordField">
+         <padding>
+            <Insets bottom="15.0" top="15.0" />
+         </padding>
+         <font>
+            <Font size="18.0" />
+         </font></PasswordField>
+      <PasswordField layoutX="870.0" layoutY="750.0" prefHeight="50.0" prefWidth="350.0"  fx:id="passwordField">
+         <padding>
+            <Insets bottom="15.0" top="15.0" />
+         </padding>
+         <font>
+            <Font size="18.0" />
+         </font></PasswordField>
+      <TextField layoutX="870.0" layoutY="600.0" prefHeight="50.0" prefWidth="350.0"  fx:id="emailField">
+         <padding>
+            <Insets bottom="15.0" top="15.0" />
+         </padding>
+         <font>
+            <Font size="18.0" />
+         </font></TextField>
+      <TextField layoutX="870.0" layoutY="525.0" prefHeight="50.0" prefWidth="350.0"  fx:id="flatHouseField">
+         <padding>
+            <Insets bottom="15.0" top="15.0" />
+         </padding>
+         <font>
+            <Font size="18.0" />
+         </font></TextField>
+      <TextField layoutX="870.0" layoutY="450.0" prefHeight="50.0" prefWidth="350.0"  fx:id="houseNumberField">
+         <padding>
+            <Insets bottom="15.0" top="15.0" />
+         </padding>
+         <font>
+            <Font size="18.0" />
+         </font></TextField>
+      <TextField layoutX="870.0" layoutY="375.0" prefHeight="50.0" prefWidth="350.0"  fx:id="streetField">
+         <padding>
+            <Insets bottom="15.0" top="15.0" />
+         </padding>
+         <font>
+            <Font size="18.0" />
+         </font></TextField>
+      <TextField layoutX="870.0" layoutY="300.0" prefHeight="50.0" prefWidth="350.0"  fx:id="peselField">
+         <padding>
+            <Insets bottom="15.0" top="15.0" />
+         </padding>
+         <font>
+            <Font size="18.0" />
+         </font></TextField>
+      <TextField layoutX="870.0" layoutY="225.0" prefHeight="50.0" prefWidth="350.0"  fx:id="lastNameField">
+         <padding>
+            <Insets bottom="15.0" top="15.0" />
+         </padding>
+         <font>
+            <Font size="18.0" />
+         </font></TextField>
+      <TextField layoutX="870.0" layoutY="150.0" prefHeight="57.0" prefWidth="350.0" fx:id="firstNameField">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <font>
+            <Font size="18.0" />
+         </font></TextField>
+      <Button fx:id="closeButton" layoutX="1850.0" layoutY="8.0" mnemonicParsing="false" onAction="#handleCloseButtonAction" prefHeight="62.0" prefWidth="64.0" text="EXIT">
+
+      </Button>
+   </children>
+
+</Pane>

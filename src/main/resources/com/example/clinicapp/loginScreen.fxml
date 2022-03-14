@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.clinicapp.LoginController">
+   <children>
+      <VBox alignment="CENTER" layoutX="760.0" layoutY="420.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="400.0">
+         <children>
+            <Label text="LOGIN" />
+            <TextField minHeight="10.0" minWidth="90.0" prefHeight="62.0" prefWidth="303.0" />
+            <Label text="PASSWORD" />
+            <PasswordField minHeight="10.0" minWidth="90.0" prefHeight="62.0" prefWidth="303.0" />
+         </children>
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </VBox>
+      <Label layoutX="676.0" layoutY="326.0" text="WELCOME TO CLINIC APP!" textFill="#eb0000">
+         <font>
+            <Font size="48.0" />
+         </font>
+      </Label>
+      <Button fx:id="closeButton" layoutX="1850.0" layoutY="8.0" mnemonicParsing="false" onAction="#handleCloseButtonAction" prefHeight="62.0" prefWidth="64.0" text="EXIT">
+         <graphic>
+            <ImageView>
+               <!-- <Image url="src/main/resources/images/button.png"/>-->
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="logInButton" layoutX="1111.0" layoutY="620.0" mnemonicParsing="false" text="Log in" />
+      <Button fx:id="registerButton" layoutX="760.0" layoutY="620.0" mnemonicParsing="false" onAction="#handRegisterButton" text="Register new patient" />
+   </children>
+</Pane>
