@@ -43,72 +43,74 @@
          <font>
             <Font size="18.0" />
          </font></Label>
-      <PasswordField layoutX="870.0" layoutY="675.0" prefHeight="50.0" prefWidth="350.0"  fx:id="confirmPasswordField">
-         <padding>
-            <Insets bottom="15.0" top="15.0" />
-         </padding>
-         <font>
-            <Font size="18.0" />
-         </font></PasswordField>
-      <PasswordField layoutX="870.0" layoutY="750.0" prefHeight="50.0" prefWidth="350.0"  fx:id="passwordField">
-         <padding>
-            <Insets bottom="15.0" top="15.0" />
-         </padding>
-         <font>
-            <Font size="18.0" />
-         </font></PasswordField>
-      <TextField layoutX="870.0" layoutY="600.0" prefHeight="50.0" prefWidth="350.0"  fx:id="emailField">
-         <padding>
-            <Insets bottom="15.0" top="15.0" />
-         </padding>
-         <font>
-            <Font size="18.0" />
-         </font></TextField>
-      <TextField layoutX="870.0" layoutY="525.0" prefHeight="50.0" prefWidth="350.0"  fx:id="flatHouseField">
-         <padding>
-            <Insets bottom="15.0" top="15.0" />
-         </padding>
-         <font>
-            <Font size="18.0" />
-         </font></TextField>
-      <TextField layoutX="870.0" layoutY="450.0" prefHeight="50.0" prefWidth="350.0"  fx:id="houseNumberField">
-         <padding>
-            <Insets bottom="15.0" top="15.0" />
-         </padding>
-         <font>
-            <Font size="18.0" />
-         </font></TextField>
-      <TextField layoutX="870.0" layoutY="375.0" prefHeight="50.0" prefWidth="350.0"  fx:id="streetField">
-         <padding>
-            <Insets bottom="15.0" top="15.0" />
-         </padding>
-         <font>
-            <Font size="18.0" />
-         </font></TextField>
-      <TextField layoutX="870.0" layoutY="300.0" prefHeight="50.0" prefWidth="350.0"  fx:id="peselField">
-         <padding>
-            <Insets bottom="15.0" top="15.0" />
-         </padding>
-         <font>
-            <Font size="18.0" />
-         </font></TextField>
-      <TextField layoutX="870.0" layoutY="225.0" prefHeight="50.0" prefWidth="350.0"  fx:id="lastNameField">
-         <padding>
-            <Insets bottom="15.0" top="15.0" />
-         </padding>
-         <font>
-            <Font size="18.0" />
-         </font></TextField>
-      <TextField layoutX="870.0" layoutY="150.0" prefHeight="57.0" prefWidth="350.0" fx:id="firstNameField">
+      <TextField fx:id="firstNameField" layoutX="870.0" layoutY="150.0" prefHeight="57.0" prefWidth="350.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
          <font>
             <Font size="18.0" />
          </font></TextField>
-      <Button fx:id="closeButton" layoutX="1850.0" layoutY="8.0" mnemonicParsing="false" onAction="#handleCloseButtonAction" prefHeight="62.0" prefWidth="64.0" text="EXIT">
+      <PasswordField fx:id="confirmPasswordField" layoutX="870.0" layoutY="675.0" prefHeight="50.0" prefWidth="350.0">
+         <padding>
+            <Insets bottom="15.0" top="15.0" />
+         </padding>
+         <font>
+            <Font size="18.0" />
+         </font></PasswordField>
+      <PasswordField fx:id="passwordField" layoutX="870.0" layoutY="750.0" prefHeight="50.0" prefWidth="350.0">
+         <padding>
+            <Insets bottom="15.0" top="15.0" />
+         </padding>
+         <font>
+            <Font size="18.0" />
+         </font></PasswordField>
+      <TextField fx:id="emailField" layoutX="870.0" layoutY="600.0" prefHeight="50.0" prefWidth="350.0">
+         <padding>
+            <Insets bottom="15.0" top="15.0" />
+         </padding>
+         <font>
+            <Font size="18.0" />
+         </font></TextField>
+      <TextField fx:id="flatHouseField" layoutX="870.0" layoutY="525.0" prefHeight="50.0" prefWidth="350.0">
+         <padding>
+            <Insets bottom="15.0" top="15.0" />
+         </padding>
+         <font>
+            <Font size="18.0" />
+         </font></TextField>
+      <TextField fx:id="houseNumberField" layoutX="870.0" layoutY="450.0" prefHeight="50.0" prefWidth="350.0">
+         <padding>
+            <Insets bottom="15.0" top="15.0" />
+         </padding>
+         <font>
+            <Font size="18.0" />
+         </font></TextField>
+      <TextField fx:id="streetField" layoutX="870.0" layoutY="375.0" prefHeight="50.0" prefWidth="350.0">
+         <padding>
+            <Insets bottom="15.0" top="15.0" />
+         </padding>
+         <font>
+            <Font size="18.0" />
+         </font></TextField>
+      <TextField fx:id="peselField" layoutX="870.0" layoutY="300.0" prefHeight="50.0" prefWidth="350.0">
+         <padding>
+            <Insets bottom="15.0" top="15.0" />
+         </padding>
+         <font>
+            <Font size="18.0" />
+         </font></TextField>
+      <TextField fx:id="lastNameField" layoutX="870.0" layoutY="225.0" prefHeight="50.0" prefWidth="350.0">
+         <padding>
+            <Insets bottom="15.0" top="15.0" />
+         </padding>
+         <font>
+            <Font size="18.0" />
+         </font></TextField>
+
+      <Button fx:id="closeButton" layoutX="1850.0" layoutY="8.0" mnemonicParsing="false" onAction="#CloseButtonAction" prefHeight="62.0" prefWidth="64.0" text="EXIT">
 
       </Button>
+      <Button layoutX="997.0" layoutY="875.0" mnemonicParsing="false" text="Create account" onAction="#createAccountAction"/>
    </children>
 
 </Pane>
