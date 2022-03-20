@@ -5,9 +5,10 @@ import java.util.Objects;
 
 public class RegisterValidator {
     String FIRSTNAME_REGEX = "[A-ZŻŹĆĄŚĘŁÓŃ][a-zżźćńółęąś]*";
-    String LASTNAME_REGEX = "[A-ZŻŹĆĄŚĘŁÓŃ][a-zżźćńółęąś]*[-]?[A-ZŻŹĆĄŚĘŁÓŃ]?[a-zżźćńółęąś]*";
+    String LASTNAME_REGEX = "[A-ZŻŹĆĄŚĘŁÓŃ][']?[A-Z]?[a-zżźćńółęąś]*[-]?[A-ZŻŹĆĄŚĘŁÓŃ]?[']?[A-Z]?[a-zżźćńółęąś]*";
     String NUMBER_REGEX = "[0-9]{1,4}[A-z]?";
     String STREET_REGEX = "[\\w\\s]+"; //TODO better pattern
+    String PESEL_REGEX = "[0-9]{11}";
     RegisterValidator() {
     }
 
@@ -40,7 +41,7 @@ public class RegisterValidator {
     public boolean pesel(String pesel) {
         if (pesel.equals(""))
             return false;
-        return true;
+        return pesel.matches(PESEL_REGEX);
     } //TODO using a created by someone class to validate PESEL
 
     public boolean password(String password, String confirmPassword) {

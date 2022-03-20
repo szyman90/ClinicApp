@@ -12,6 +12,9 @@ public class MainController {
     StackPane mainStackPane;
     @FXML
     public void initialize() {
+        loadLoginScreen();
+    }
+    public void loadLoginScreen() {
         FXMLLoader loader = new FXMLLoader(this.getClass().getResource("loginScreen.fxml"));
         Pane pane = null;
         try {
@@ -22,9 +25,7 @@ public class MainController {
         LoginController loginController = loader.getController();
         loginController.setMainController(this);
         setScreen(pane);
-
     }
-
     public void setScreen(Pane pane) {
         mainStackPane.getChildren().clear();
         mainStackPane.getChildren().add(pane);

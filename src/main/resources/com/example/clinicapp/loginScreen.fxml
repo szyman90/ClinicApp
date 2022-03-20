@@ -10,10 +10,10 @@
    <children>
       <VBox alignment="CENTER" layoutX="760.0" layoutY="420.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="400.0">
          <children>
-            <Label text="LOGIN" />
-            <TextField minHeight="10.0" minWidth="90.0" prefHeight="62.0" prefWidth="303.0" />
+            <Label text="E-MAIL" />
+            <TextField fx:id="emailField" minHeight="10.0" minWidth="90.0" prefHeight="62.0" prefWidth="303.0" />
             <Label text="PASSWORD" />
-            <PasswordField minHeight="10.0" minWidth="90.0" prefHeight="62.0" prefWidth="303.0" />
+            <PasswordField fx:id="passwordField" minHeight="10.0" minWidth="90.0" prefHeight="62.0" prefWidth="303.0" />
          </children>
          <cursor>
             <Cursor fx:constant="TEXT" />
@@ -31,7 +31,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="logInButton" layoutX="1111.0" layoutY="620.0" mnemonicParsing="false" text="Log in" />
+      <Button fx:id="loginButton" layoutX="1111.0" layoutY="620.0" mnemonicParsing="false" onAction="#verifyLoginData" text="Log in" />
       <Button fx:id="registerButton" layoutX="760.0" layoutY="620.0" mnemonicParsing="false" onAction="#handRegisterButton" text="Register new patient" />
    </children>
 </Pane>

@@ -1,7 +1,6 @@
 package com.example.clinicapp;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -21,6 +20,7 @@ public class RegisterController {
     public TextField firstNameField;
     public Button closeButton;
 
+    //TODO add city etc.
     @FXML
     public void CloseButtonAction() {
         Stage stage = (Stage) closeButton.getScene().getWindow();
@@ -31,39 +31,57 @@ public class RegisterController {
         this.mainController = mainController;
     }
 
+    @FXML
     public void createAccountAction() {
+
         RegisterValidator registerValidator = new RegisterValidator();
         if (!registerValidator.firstNameCheck(firstNameField.getText())) {
-            errorFromFields("first name");
+            DialogWindows.errorFromFields("first name");
             firstNameField.clear();
         } else if (!registerValidator.lastNameCheck(lastNameField.getText())) {
-            errorFromFields("last name");
+            DialogWindows.errorFromFields("last name");
             lastNameField.clear();
-        } else if (!registerValidator.emailCheck(emailField.getText())) {
-            errorFromFields("email");
-            emailField.clear();
+        } else if (!registerValidator.pesel(peselField.getText())) {
+            DialogWindows.errorFromFields("PESEL");
+            peselField.clear();
+        } else if (!registerValidator.street(streetField.getText())) {
+            DialogWindows.errorFromFields("street");
+            streetField.clear();
         } else if (!registerValidator.houseNumber(houseNumberField.getText())) {
-            errorFromFields("house number");
+            DialogWindows.errorFromFields("house number");
             houseNumberField.clear();
         } else if (!registerValidator.flatHouseNumber(flatHouseField.getText())) {
-            errorFromFields("flat house number");
+            DialogWindows.errorFromFields("flat house number");
             flatHouseField.clear();
-        } else if (!registerValidator.street(streetField.getText())) {
-            errorFromFields("street");
-            streetField.clear();
-        } else if (!registerValidator.pesel(peselField.getText())) {
-            errorFromFields("PESEL");
-            peselField.clear();
+        } else if (!registerValidator.emailCheck(emailField.getText())) {
+            DialogWindows.errorFromFields("email");
+            emailField.clear();
         } else if (!registerValidator.password(passwordField.getText(), confirmPasswordField.getText())) {
-            errorFromFields("password");
+            DialogWindows.errorFromFields("password");
             passwordField.clear();
             confirmPasswordField.clear();
-            }//TODO checking all field and register new account or throw exceptions
+        } else {
+            createNewPatientAccount();
+            DialogWindows.createAccountSuccessful();
+            mainController.loadLoginScreen();
         }
-        public void errorFromFields(String fieldName) {
-        Alert emailAlert = new Alert(Alert.AlertType.ERROR);
-        emailAlert.setTitle("incorrect "+ fieldName);
-        emailAlert.setContentText("Please enter correct " + fieldName);
-        emailAlert.showAndWait();
     }
+
+
+    private void createNewPatientAccount() {
+        Patient newPatient = new Patient();
+        writeToPatientObject(newPatient);
+        PatientDao patientDao = new PatientDao();
+        patientDao.addNewPatient(newPatient);
+    }
+
+    private void writeToPatientObject(Patient newPatient) {
+        newPatient.setFirstName(firstNameField.getText());
+        newPatient.setLastName(lastNameField.getText());
+        newPatient.setEmail(emailField.getText());
+        newPatient.setPesel(peselField.getText());
+        newPatient.setPassword(passwordField.getText());
+    }
+
+
 }
