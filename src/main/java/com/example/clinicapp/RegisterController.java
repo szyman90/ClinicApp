@@ -33,7 +33,7 @@ public class RegisterController {
 
     @FXML
     public void createAccountAction() {
-
+//TODO cały field
         RegisterValidator registerValidator = new RegisterValidator();
         if (!registerValidator.firstNameCheck(firstNameField.getText())) {
             DialogWindows.errorFromFields("first name");
@@ -81,6 +81,9 @@ public class RegisterController {
         newPatient.setEmail(emailField.getText());
         newPatient.setPesel(peselField.getText());
         newPatient.setPassword(passwordField.getText());
+        newPatient.setStreet(streetField.getText());
+        newPatient.setHouseNumber(houseNumberField.getText());
+        newPatient.setFlatNumber(flatHouseField.getText());
     }
 
 

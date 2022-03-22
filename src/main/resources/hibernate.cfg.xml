@@ -19,7 +19,10 @@
         <!-- Update database on startup -->
         <property name="hbm2ddl.auto">update</property>
         <!-- Annotated entity classes -->
+        <mapping class="visit.Visit"/>
         <mapping class="com.example.clinicapp.Patient"/>
+        <mapping class="doctor.Doctor"/>
+
 
     </session-factory>
 </hibernate-configuration>

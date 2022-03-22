@@ -14,7 +14,6 @@ public class Main extends Application {
         Scene scene = new Scene(fxmlLoader.load(), 1920, 1080);
         stage.setTitle("Clinic App");
         stage.setScene(scene);
-        //stage.setFullScreen(true);
         stage.show();
     }
 

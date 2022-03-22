@@ -9,4 +9,8 @@ module com.example.clinicapp {
     requires java.sql;
     opens com.example.clinicapp to javafx.fxml, org.hibernate.orm.core;
     exports com.example.clinicapp;
+    exports doctor;
+    exports visit;
+    opens doctor to javafx.fxml, org.hibernate.orm.core;
+    opens visit to javafx.fxml, org.hibernate.orm.core;
 }

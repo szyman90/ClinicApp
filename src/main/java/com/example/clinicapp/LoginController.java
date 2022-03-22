@@ -1,5 +1,8 @@
 package com.example.clinicapp;
 
+import doctor.Doctor;
+import doctor.DoctorController;
+import doctor.DoctorDao;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -56,11 +59,60 @@ public class LoginController {
     public void verifyLoginData() {
         String email = emailField.getText();
         String password = passwordField.getText();
+        if(email.contains("clinic.com"))
+            verifyForDoctor(email, password);
+        else
+            verifyForPatient(email, password);
+
+    }
+
+    private void verifyForPatient(String email, String password) {
         PatientDao patientDao = new PatientDao();
         String passwordFromTable = patientDao.loginAndPasswordCheck(email);
-        if (passwordFromTable.equals(password))
-            System.out.println("good");
+        if (passwordFromTable.equals(password)) {
+            Patient patient = patientDao.getPatientAfterLogin(password);
+            patientScreenEnable(patient);
+        }
         else
             DialogWindows.wrongEmailOrPassword(passwordFromTable);
+    }
+
+    private void verifyForDoctor(String email, String password) {
+        DoctorDao doctorDao = new DoctorDao();
+        String passwordFromTable = doctorDao.loginAndPasswordCheck(email);
+        if (passwordFromTable.equals(password)) {
+            Doctor doctor = doctorDao.getDoctorAfterLogin(password);
+            doctorScreenEnable(doctor);
+        }
+        else
+            DialogWindows.wrongEmailOrPassword(passwordFromTable);
+    }
+
+    private void doctorScreenEnable(Doctor doctor) {
+        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("doctorScreen.fxml"));
+        Pane pane = null;
+        try {
+            pane = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        DoctorController doctorController = loader.getController();
+        doctorController.setMainController(mainController);
+        doctorController.setDoctor(doctor);
+        mainController.setScreen(pane);
+    }
+
+    private void patientScreenEnable(Patient patient) {
+        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("patientScreen.fxml"));
+        Pane pane = null;
+        try {
+            pane = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        PatientController patientController = loader.getController();
+        patientController.setMainController(mainController);
+        patientController.setPatient(patient);
+        mainController.setScreen(pane);
     }
 }

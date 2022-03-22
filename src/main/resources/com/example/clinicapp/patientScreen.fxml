@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.clinicapp.PatientController">
+   <children>
+      <Label fx:id="welcomeLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="725.0" layoutY="43.0" text="WELCOME KTOS" textAlignment="CENTER">
+         <font>
+            <Font size="48.0" />
+         </font>
+      </Label>
+      <Pane layoutX="1044.0" layoutY="238.0" prefHeight="650.0" prefWidth="650.0">
+         <children>
+            <TableView fx:id="table" prefHeight="200.0" prefWidth="408.0">
+              <columns>
+                <TableColumn fx:id="firstNameDoctorColumn" prefWidth="75.0" text="C1" />
+                <TableColumn fx:id="lastNameDoctorColumn" prefWidth="103.0" text="C2" />
+                  <TableColumn fx:id="specializationColumn" prefWidth="102.0" text="Column X" />
+                  <TableColumn fx:id="visitDateColumn" prefWidth="113.0" text="Column X" />
+              </columns>
+            </TableView>
+         </children></Pane>
+      <Pane layoutX="111.0" layoutY="294.0" prefHeight="650.0" prefWidth="650.0">
+         <children>
+            <Label layoutX="234.0" layoutY="44.0" text="PERSONAL DATA">
+               <font>
+                  <Font size="24.0" />
+               </font></Label>
+            <Label layoutX="234.0" layoutY="139.0" text="First name:" />
+            <Label layoutX="234.0" layoutY="195.0" text="Last name: " />
+            <Label layoutX="234.0" layoutY="247.0" text="PESEL:" />
+            <Label layoutX="233.0" layoutY="290.0" text="e-mail:" />
+            <Label layoutX="234.0" layoutY="334.0" text="street:" />
+            <Label layoutX="234.0" layoutY="377.0" text="house number:" />
+            <Label layoutX="233.0" layoutY="415.0" text="flat number:" />
+            <Label fx:id="firstNameLabel" layoutX="325.0" layoutY="139.0" text="Label" />
+            <Label fx:id="lastNameLabel" layoutX="325.0" layoutY="195.0" text="Label" />
+            <Label fx:id="peselLabel" layoutX="325.0" layoutY="247.0" text="Label" />
+            <Label fx:id="emailLabel" layoutX="325.0" layoutY="290.0" text="Label" />
+            <Label fx:id="streetLabel" layoutX="325.0" layoutY="334.0" text="Label" />
+            <Label fx:id="houseNumberLabel" layoutX="325.0" layoutY="377.0" text="Label" />
+            <Label fx:id="flatNumberLabel" layoutX="325.0" layoutY="415.0" text="Label" />
+         </children>
+      </Pane>
+      <Button fx:id="closeButton" layoutX="1850.0" layoutY="8.0" mnemonicParsing="false" onAction="#closeButtonAction" prefHeight="62.0" prefWidth="64.0" text="EXIT">
+      </Button>
+      <Button fx:id="logOutButton" layoutX="1756.0" layoutY="8.0" mnemonicParsing="false" onAction="#logOutButtonAction" prefHeight="62.0" prefWidth="79.0" text="LOG OUT" />
+   </children>
+</Pane>

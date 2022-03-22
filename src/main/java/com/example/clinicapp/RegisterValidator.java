@@ -1,8 +1,6 @@
 package com.example.clinicapp;
 import org.apache.commons.validator.routines.EmailValidator;
 
-import java.util.Objects;
-
 public class RegisterValidator {
     String FIRSTNAME_REGEX = "[A-ZŻŹĆĄŚĘŁÓŃ][a-zżźćńółęąś]*";
     String LASTNAME_REGEX = "[A-ZŻŹĆĄŚĘŁÓŃ][']?[A-Z]?[a-zżźćńółęąś]*[-]?[A-ZŻŹĆĄŚĘŁÓŃ]?[']?[A-Z]?[a-zżźćńółęąś]*";
@@ -24,6 +22,8 @@ public class RegisterValidator {
 
     public boolean emailCheck(String email) {
         if (email.equals(""))
+            return false;
+        if (email.contains("clinic.com"))
             return false;
         return EmailValidator.getInstance().isValid(email);
     }

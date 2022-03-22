@@ -20,6 +20,12 @@ public class    Patient {
     private String pesel;
     @Column(name="email")
     private String email;
+    @Column(name="street")
+    private String street;
+    @Column(name="house_number")
+    private String houseNumber;
+    @Column(name="flat_number")
+    private String flatNumber;
     @Column(name="password")
     private String password;
 
