@@ -1,5 +1,6 @@
 package com.example.clinicapp;
 
+import doctor.Doctor;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -16,29 +17,20 @@ public class PatientDao {
         session.close();
     }
 
-    public String loginAndPasswordCheck(String email) {
+    public Patient loginAndPasswordCheck(String email, String password) {
+        Patient patient;
         try {
             SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
             Session session = sessionFactory.openSession();
             session.beginTransaction();
-            Patient patient = (Patient) session.createQuery("SELECT c FROM Patient c" +
-                            " WHERE email like :email")
-                    .setParameter("email", "%" + email + "%").getSingleResult();
+            patient = (Patient) session.createQuery("SELECT c FROM Patient c" +
+                            " WHERE email = :email AND password = :password")
+                    .setParameter("email",email).setParameter("password", password).getSingleResult();
             session.close();
-            return patient.getPassword();
         } catch (NoResultException e) {
-            return "";
+            return null;
         }
-    }
-
-    public Patient getPatientAfterLogin(String password) {
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
-        Session session = sessionFactory.openSession();
-        session.beginTransaction();
-        Patient patient = (Patient) session.createQuery("SELECT c FROM Patient c" +
-                        " WHERE password = :password" )
-                .setParameter("password", password).getSingleResult();
-        session.close();
         return patient;
     }
+
 }

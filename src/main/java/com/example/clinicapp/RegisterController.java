@@ -33,40 +33,35 @@ public class RegisterController {
 
     @FXML
     public void createAccountAction() {
-//TODO cały field
-        RegisterValidator registerValidator = new RegisterValidator();
-        if (!registerValidator.firstNameCheck(firstNameField.getText())) {
-            DialogWindows.errorFromFields("first name");
-            firstNameField.clear();
-        } else if (!registerValidator.lastNameCheck(lastNameField.getText())) {
-            DialogWindows.errorFromFields("last name");
-            lastNameField.clear();
-        } else if (!registerValidator.pesel(peselField.getText())) {
-            DialogWindows.errorFromFields("PESEL");
-            peselField.clear();
-        } else if (!registerValidator.street(streetField.getText())) {
-            DialogWindows.errorFromFields("street");
-            streetField.clear();
-        } else if (!registerValidator.houseNumber(houseNumberField.getText())) {
-            DialogWindows.errorFromFields("house number");
-            houseNumberField.clear();
-        } else if (!registerValidator.flatHouseNumber(flatHouseField.getText())) {
-            DialogWindows.errorFromFields("flat house number");
-            flatHouseField.clear();
-        } else if (!registerValidator.emailCheck(emailField.getText())) {
-            DialogWindows.errorFromFields("email");
-            emailField.clear();
-        } else if (!registerValidator.password(passwordField.getText(), confirmPasswordField.getText())) {
-            DialogWindows.errorFromFields("password");
-            passwordField.clear();
-            confirmPasswordField.clear();
-        } else {
+        if (fieldValidationCheck()) {
             createNewPatientAccount();
             DialogWindows.createAccountSuccessful();
             mainController.loadLoginScreen();
         }
     }
 
+    // @SuppressWarnings
+    public boolean fieldValidationCheck() {
+        RegisterValidator registerValidator = new RegisterValidator();
+        if (!registerValidator.firstNameCheck(firstNameField)) {
+            return false;
+        } else if (!registerValidator.lastNameCheck(lastNameField)) {
+            return false;
+        } else if (!registerValidator.pesel(peselField)) {
+            return false;
+        } else if (!registerValidator.street(streetField)) {
+            return false;
+        } else if (!registerValidator.houseNumber(houseNumberField)) {
+            return false;
+        } else if (!registerValidator.flatHouseNumber(flatHouseField)) {
+            return false;
+        } else if (!registerValidator.emailCheck(emailField)) {
+            return false;
+        } else if (!registerValidator.password(passwordField, confirmPasswordField)) { //XDD
+            return false;
+        }
+        return true;
+    }
 
     private void createNewPatientAccount() {
         Patient newPatient = new Patient();

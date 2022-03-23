@@ -3,7 +3,6 @@ package visit;
 import com.example.clinicapp.HibernateUtil;
 import com.example.clinicapp.PatientVisitTable;
 import org.hibernate.Session;
-
 import java.util.ArrayList;
 
 public class VisitDao {

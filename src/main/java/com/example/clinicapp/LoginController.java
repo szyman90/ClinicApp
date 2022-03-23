@@ -59,7 +59,7 @@ public class LoginController {
     public void verifyLoginData() {
         String email = emailField.getText();
         String password = passwordField.getText();
-        if(email.contains("clinic.com"))
+        if (email.contains("clinic.com"))
             verifyForDoctor(email, password);
         else
             verifyForPatient(email, password);
@@ -67,25 +67,23 @@ public class LoginController {
     }
 
     private void verifyForPatient(String email, String password) {
-        PatientDao patientDao = new PatientDao();
-        String passwordFromTable = patientDao.loginAndPasswordCheck(email);
-        if (passwordFromTable.equals(password)) {
-            Patient patient = patientDao.getPatientAfterLogin(password);
+        try {
+            PatientDao patientDao = new PatientDao();
+            Patient patient = patientDao.loginAndPasswordCheck(email, password);
             patientScreenEnable(patient);
+        } catch (NullPointerException e) {
+            DialogWindows.wrongEmailOrPassword();
         }
-        else
-            DialogWindows.wrongEmailOrPassword(passwordFromTable);
     }
 
     private void verifyForDoctor(String email, String password) {
-        DoctorDao doctorDao = new DoctorDao();
-        String passwordFromTable = doctorDao.loginAndPasswordCheck(email);
-        if (passwordFromTable.equals(password)) {
-            Doctor doctor = doctorDao.getDoctorAfterLogin(password);
+        try {
+            DoctorDao doctorDao = new DoctorDao();
+            Doctor doctor = doctorDao.loginAndPasswordCheck(email, password);
             doctorScreenEnable(doctor);
+        } catch (NullPointerException e) {
+            DialogWindows.wrongEmailOrPassword();
         }
-        else
-            DialogWindows.wrongEmailOrPassword(passwordFromTable);
     }
 
     private void doctorScreenEnable(Doctor doctor) {

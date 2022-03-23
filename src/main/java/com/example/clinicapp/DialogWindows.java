@@ -3,24 +3,10 @@ package com.example.clinicapp;
 import javafx.scene.control.Alert;
 
 public class DialogWindows {
-    public static void wrongEmailOrPassword(String passwordFromTable) {
-        if (passwordFromTable.equals(""))
-            wrongEmail();
-        else
-            wrongPassword();
-    }
-
-    private static void wrongPassword() {
+    public static void wrongEmailOrPassword() {
         Alert emailAlert = new Alert(Alert.AlertType.ERROR);
-        emailAlert.setTitle("wrong password!");
-        emailAlert.setContentText("Please enter the correct password");
-        emailAlert.show();
-    }
-
-    private static void wrongEmail() {
-        Alert emailAlert = new Alert(Alert.AlertType.ERROR);
-        emailAlert.setTitle("Wrong email!");
-        emailAlert.setContentText("There is no account with that email. Please enter correct email.");
+        emailAlert.setTitle("wrong e-mail or password!");
+        emailAlert.setContentText("Please enter the correct data");
         emailAlert.show();
     }
 
@@ -36,5 +22,5 @@ public class DialogWindows {
         emailAlert.setTitle("Wrong " + fieldName + "!");
         emailAlert.setContentText("Please enter the correct " + fieldName);
         emailAlert.showAndWait();
-    }
+    } //TODO collect error and print all of them in one window
 }
