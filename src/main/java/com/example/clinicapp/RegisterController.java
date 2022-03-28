@@ -43,24 +43,29 @@ public class RegisterController {
     // @SuppressWarnings
     public boolean fieldValidationCheck() {
         RegisterValidator registerValidator = new RegisterValidator();
-        if (!registerValidator.firstNameCheck(firstNameField)) {
-            return false;
-        } else if (!registerValidator.lastNameCheck(lastNameField)) {
-            return false;
-        } else if (!registerValidator.pesel(peselField)) {
-            return false;
-        } else if (!registerValidator.street(streetField)) {
-            return false;
-        } else if (!registerValidator.houseNumber(houseNumberField)) {
-            return false;
-        } else if (!registerValidator.flatHouseNumber(flatHouseField)) {
-            return false;
-        } else if (!registerValidator.emailCheck(emailField)) {
-            return false;
-        } else if (!registerValidator.password(passwordField, confirmPasswordField)) { //XDD
+        StringBuilder errorMessageString = new StringBuilder();
+        if (!registerValidator.firstNameCheck(firstNameField))
+            errorMessageString.append("first name; ");
+        if (!registerValidator.lastNameCheck(lastNameField))
+            errorMessageString.append("last name; ");
+        if (!registerValidator.pesel(peselField))
+            errorMessageString.append("PESEL; ");
+        if (!registerValidator.street(streetField))
+            errorMessageString.append("street; ");
+        if (!registerValidator.houseNumber(houseNumberField))
+            errorMessageString.append("house number; ");
+        if (!registerValidator.flatHouseNumber(flatHouseField))
+            errorMessageString.append("flat-house number; ");
+        if (!registerValidator.emailCheck(emailField))
+            errorMessageString.append("email; ");
+        if (!registerValidator.password(passwordField, confirmPasswordField))
+            errorMessageString.append("password;");
+        if (errorMessageString.isEmpty())
+            return true;
+        else {
+            DialogWindows.errorFromFields(errorMessageString.toString());
             return false;
         }
-        return true;
     }
 
     private void createNewPatientAccount() {

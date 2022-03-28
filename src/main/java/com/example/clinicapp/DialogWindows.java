@@ -17,10 +17,10 @@ public class DialogWindows {
         emailAlert.show();
     }
 
-    public static void errorFromFields(String fieldName) {
+    public static void errorFromFields(String fieldNames) {
         Alert emailAlert = new Alert(Alert.AlertType.ERROR);
-        emailAlert.setTitle("Wrong " + fieldName + "!");
-        emailAlert.setContentText("Please enter the correct " + fieldName);
+        emailAlert.setTitle("Wrong " + fieldNames + "!");
+        emailAlert.setContentText("Please enter the correct: " + fieldNames);
         emailAlert.showAndWait();
-    } //TODO collect error and print all of them in one window
+    }
 }

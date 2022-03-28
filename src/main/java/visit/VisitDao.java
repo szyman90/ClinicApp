@@ -10,7 +10,7 @@ public class VisitDao {
     public ArrayList<DoctorVisitTable> getAllVisitForDoctor(int id) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         ArrayList<Visit> resultList = (ArrayList<Visit>) session.createQuery("select c from Visit c" +
-                " WHERE c.doctor.doctor_id = 1").getResultList();
+                " WHERE c.doctor.doctor_id = :id").setParameter("id",id).getResultList(); //TODO poprawic
         session.close();
         ArrayList<DoctorVisitTable> arrayList = new ArrayList<>();
         for (Visit visit : resultList) {
