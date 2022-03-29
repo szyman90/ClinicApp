@@ -13,10 +13,10 @@
    <children>
       <TableView fx:id="table" layoutX="625.0" layoutY="340.0" prefHeight="200.0" prefWidth="408.0">
         <columns>
-          <TableColumn fx:id="firstNameDoctorColumn" prefWidth="75.0" text="C1" />
-          <TableColumn fx:id="lastNameDoctorColumn" prefWidth="103.0" text="C2" />
-            <TableColumn fx:id="specializationColumn" prefWidth="102.0" text="Column X" />
-            <TableColumn fx:id="visitDateColumn" prefWidth="127.0" text="Column X" />
+          <TableColumn fx:id="firstNameDoctorColumn" prefWidth="75.0" text="First name" />
+          <TableColumn fx:id="lastNameDoctorColumn" prefWidth="103.0" text="Last name" />
+            <TableColumn fx:id="specializationColumn" prefWidth="102.0" text="Specialization" />
+            <TableColumn fx:id="visitDateColumn" prefWidth="127.0" text="Date of the visit" />
         </columns>
       </TableView>
       <Label fx:id="welcomeLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="725.0" layoutY="43.0" text="WELCOME KTOS" textAlignment="CENTER">
@@ -29,9 +29,10 @@
             <Label layoutX="137.0" layoutY="138.0" text="Choose the specialist" />
             <Label layoutX="137.0" layoutY="174.0" text="Choose date of the visit" />
             <Label layoutX="137.0" layoutY="220.0" text="Choose the time of the visit" />
-            <ComboBox fx:id="specialistCombo" layoutX="325.0" layoutY="134.0" prefWidth="150.0" onAction="#takeSelectedDoctor"/>
-            <ComboBox fx:id="timeCombo" layoutX="325.0" layoutY="216.0" prefWidth="150.0" />
-            <DatePicker fx:id="datePicker" layoutX="325.0" layoutY="170.0" onAction="#takeSelectedDate"/>
+            <ComboBox fx:id="specialistCombo" layoutX="325.0" layoutY="134.0" onAction="#takeSelectedDoctor" prefWidth="150.0" />
+            <ComboBox fx:id="timeCombo" layoutX="325.0" layoutY="216.0" onAction="#takeSelectedTime" prefWidth="150.0" />
+            <DatePicker fx:id="datePicker" layoutX="325.0" layoutY="170.0" onAction="#takeSelectedDate" />
+            <Button fx:id="addNewVisitButton" layoutX="376.0" layoutY="281.0" mnemonicParsing="false" onAction="#addNewVisitAction" text="Add new visit" />
          </children></Pane>
       <Pane layoutX="111.0" layoutY="294.0" prefHeight="650.0" prefWidth="650.0">
          <children>
@@ -58,6 +59,6 @@
       <Button fx:id="closeButton" layoutX="1850.0" layoutY="8.0" mnemonicParsing="false" onAction="#closeButtonAction" prefHeight="62.0" prefWidth="64.0" text="EXIT">
       </Button>
       <Button fx:id="logOutButton" layoutX="1756.0" layoutY="8.0" mnemonicParsing="false" onAction="#logOutButtonAction" prefHeight="62.0" prefWidth="79.0" text="LOG OUT" />
-      <Button fx:id="addVisitButton" layoutX="921.0" layoutY="561.0" mnemonicParsing="false" onAction="#addVisitButtonAction" text="Add new visit" />
+      <Button fx:id="makeReservationButton" layoutX="921.0" layoutY="561.0" mnemonicParsing="false" onAction="#makeReservationAction" text="Make reservation" />
    </children>
 </Pane>
