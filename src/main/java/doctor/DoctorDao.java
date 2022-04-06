@@ -7,6 +7,14 @@ import org.hibernate.cfg.Configuration;
 import javax.persistence.NoResultException;
 
 public class DoctorDao {
+    private static DoctorDao instance;
+    public static DoctorDao getInstance() {
+        if (instance == null) {
+            instance = new DoctorDao();
+        }
+        return instance;
+    }
+    private DoctorDao(){}
     public Doctor loginAndPasswordCheck(String email, String password) {
         Doctor doctor;
         try {

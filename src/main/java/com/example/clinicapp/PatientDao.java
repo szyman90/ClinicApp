@@ -14,6 +14,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PatientDao {
+    private static PatientDao instance;
+
+    private PatientDao() {}
+    public static PatientDao getInstance() {
+        if (instance == null) {
+            instance = new PatientDao();
+        }
+        return instance;
+    }
     public void addNewPatient(Patient newPatient) {
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.openSession();

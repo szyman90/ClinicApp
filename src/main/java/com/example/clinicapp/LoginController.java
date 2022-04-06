@@ -68,8 +68,7 @@ public class LoginController {
 
     private void verifyForPatient(String email, String password) {
         try {
-            PatientDao patientDao = new PatientDao();
-            Patient patient = patientDao.loginAndPasswordCheck(email, password);
+            Patient patient = PatientDao.getInstance().loginAndPasswordCheck(email, password);
             patientScreenEnable(patient);
         } catch (NullPointerException e) {
             DialogWindows.wrongEmailOrPassword();
@@ -78,8 +77,7 @@ public class LoginController {
 
     private void verifyForDoctor(String email, String password) {
         try {
-            DoctorDao doctorDao = new DoctorDao();
-            Doctor doctor = doctorDao.loginAndPasswordCheck(email, password);
+            Doctor doctor = DoctorDao.getInstance().loginAndPasswordCheck(email, password);
             doctorScreenEnable(doctor);
         } catch (NullPointerException e) {
             DialogWindows.wrongEmailOrPassword();

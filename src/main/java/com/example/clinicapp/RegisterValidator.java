@@ -50,7 +50,7 @@ public class RegisterValidator {
             streetField.clear();
             return false;
         }
-        return true;
+        return true; 
     }
 
     public boolean houseNumber(TextField houseNumberField) {
@@ -75,9 +75,9 @@ public class RegisterValidator {
             return false;
         }
         return true;
-    } //TODO using a created by someone class to validate PESEL
+    }
 
-    public boolean password(TextField passwordField, TextField confirmPasswordField) { //Tu też
+    public boolean password(TextField passwordField, TextField confirmPasswordField) {
         if (passwordField.getText().equals("") || (confirmPasswordField.getText().equals(""))) {
             passwordField.clear();
             confirmPasswordField.clear();

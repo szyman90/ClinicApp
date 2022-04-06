@@ -19,6 +19,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PatientController {
+
+    // <editor-fold desc="Variables">
     final long WORK_START_TIME = 28800;
     final long WORK_END_TIME = 28800 * 2;
     final long HALF_HOUR_IN_SEC = 1800;
@@ -44,22 +46,39 @@ public class PatientController {
     public Button logOutButton;
     @FXML
     public TableColumn<PatientVisitTable, String> firstNameDoctorColumn = new TableColumn<>();
+    @FXML
     public TableColumn<PatientVisitTable, String> lastNameDoctorColumn = new TableColumn<>();
+    @FXML
     public TableColumn<PatientVisitTable, String> specializationColumn = new TableColumn<>();
+    @FXML
     public TableColumn<PatientVisitTable, String> visitDateColumn = new TableColumn<>();
+    @FXML
     public TableView<PatientVisitTable> table = new TableView<>();
+    @FXML
     public ComboBox<String> specialistCombo;
+    @FXML
     public ComboBox<LocalTime> timeCombo;
+    @FXML
     public DatePicker datePicker;
+    @FXML
     public Pane addVisitPane;
+    @FXML
     public Button addNewVisitButton;
+    @FXML
     public Button makeReservationButton;
+    @FXML
+    public Button deleteReservationButton;
+    @FXML
     private Doctor doctorToAddVisit = null;
+    @FXML
     private LocalDate dateForAddingVisit = null;
+    @FXML
     private LocalTime timeForAddingVisit = null;
 
+    Visit visit = new Visit();
     MainController mainController;
     Patient patient;
+// </editor-fold>
 
     public void setMainController(MainController mainController) {
         this.mainController = mainController;
@@ -74,6 +93,7 @@ public class PatientController {
         addNewVisitButton.setVisible(false);
     }
 
+    @FXML
     public void logOutButtonAction() {
         mainController.loadLoginScreen();
     }
@@ -98,8 +118,7 @@ public class PatientController {
     }
 
     private void setVisitTable() {
-        VisitDao visitDao = new VisitDao();
-        List<PatientVisitTable> listOfVisit = visitDao.getAllVisitForPatient(patient.getPatientId());
+        List<PatientVisitTable> listOfVisit = VisitDao.getInstance().getPatientVisitsToTable(patient.getPatientId());
         setItemsInTableView(listOfVisit);
     }
 
@@ -110,23 +129,38 @@ public class PatientController {
         specializationColumn.setCellValueFactory(new PropertyValueFactory<>("specialization"));
         visitDateColumn.setCellValueFactory(new PropertyValueFactory<>("dateOfVisit"));
         table.setItems(patientVisitTablesList);
-    } //TODO improve the appearance of the board
+    }
 
+    @FXML
     public void makeReservationAction() {
         addVisitPane.setVisible(true);
-        PatientDao patientDao = new PatientDao();
-        ObservableList<String> specialistToCombo = patientDao.getSpecialist();
+        ObservableList<String> specialistToCombo = PatientDao.getInstance().getSpecialist();
         specialistCombo.setItems(specialistToCombo);
     }
 
+    @FXML
+    public void addNewVisitAction() {
+        visit.setPatient(this.patient);
+        visit.setDoctor(this.doctorToAddVisit);
+        LocalDateTime localDateTime = LocalDateTime.of(dateForAddingVisit, timeForAddingVisit);
+        visit.setVisitDate(Timestamp.valueOf(localDateTime));
+        VisitDao.getInstance().addNewVisitToDB(visit);
+        addNewVisitButton.setVisible(false);
+        addVisitPane.setVisible(false);
+        setVisitTable();
+    }
+    @FXML
+    public void deleteReservationAction() {
+        PatientVisitTable patientVisitTable = table.getSelectionModel().getSelectedItem();
+        VisitDao.getInstance().deleteVisit(patientVisitTable.getId());
+        setVisitTable();
+    }
     public void takeSelectedDoctor() {
         timeForAddingVisit = null;
         dateForAddingVisit = null;
         addNewVisitButton.setVisible(false);
         String specialization = specialistCombo.getValue();
-        PatientDao patientDao = new PatientDao();
-        doctorToAddVisit = patientDao.getDoctor(specialization);
-        //something is wrong with it
+        doctorToAddVisit = PatientDao.getInstance().getDoctor(specialization);
     }
 
     public void takeSelectedDate() {
@@ -153,8 +187,9 @@ public class PatientController {
     }
 
     private List<LocalTime> getAllDoctorVisitsOnSelectedDay() {
-        PatientDao patientDao = new PatientDao();
-        List<Timestamp> visitsOnSelectedDayTimestampList = patientDao.getAllDrVisitsFromDao(dateForAddingVisit, doctorToAddVisit);
+        List<Timestamp> visitsOnSelectedDayTimestampList = PatientDao
+                .getInstance()
+                .getAllDrVisitsFromDao(dateForAddingVisit, doctorToAddVisit);
         return toLocalTimeList(visitsOnSelectedDayTimestampList);
     }
 
@@ -169,18 +204,6 @@ public class PatientController {
     public void takeSelectedTime() {
         this.timeForAddingVisit = timeCombo.getValue();
         addNewVisitButton.setVisible(true);
-    }
-
-    public void addNewVisitAction() {
-        Visit newVisit = new Visit();
-        newVisit.setPatient(this.patient);
-        newVisit.setDoctor(this.doctorToAddVisit);
-        LocalDateTime localDateTime = LocalDateTime.of(dateForAddingVisit, timeForAddingVisit);
-        newVisit.setVisitDate(Timestamp.valueOf(localDateTime));
-        VisitDao visitDao = new VisitDao();
-        visitDao.addNewVisitToDB(newVisit);
-        addNewVisitButton.setVisible(false);
-        addVisitPane.setVisible(false);
     }
 
 }

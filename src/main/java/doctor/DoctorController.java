@@ -1,8 +1,10 @@
 package doctor;
 
 import com.example.clinicapp.MainController;
+import com.example.clinicapp.PatientVisitTable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -11,19 +13,28 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import visit.VisitDao;
 import visit.DoctorVisitTable;
-
 import java.sql.Timestamp;
-import java.util.ArrayList;
+import java.util.List;
 
 public class DoctorController {
+    @FXML
     public TableView <DoctorVisitTable> table = new TableView<>();
+    @FXML
     public TableColumn<DoctorVisitTable, String> firstNameTable = new TableColumn<>();
+    @FXML
     public TableColumn <DoctorVisitTable, String>lastNameTable= new TableColumn<>();
+    @FXML
     public TableColumn <DoctorVisitTable, String>specializationTable= new TableColumn<>();
+    @FXML
     public TableColumn<DoctorVisitTable, Timestamp> dateTable = new TableColumn<>();
+    @FXML
     public Button closeButton;
+    @FXML
+    public Button deleteReservationButton;
+
     MainController mainController;
     Doctor doctor;
+
     public void logOutButtonAction() {
         mainController.loadLoginScreen();
     }
@@ -43,17 +54,22 @@ public class DoctorController {
     }
 
     private void setVisitTable() {
-        VisitDao visitDao = new VisitDao();
-        ArrayList<DoctorVisitTable> listOfVisit = visitDao.getAllVisitForDoctor(doctor.getDoctor_id());
+        List<DoctorVisitTable> listOfVisit = VisitDao.getInstance().getDoctorVisitsToTable(doctor.getDoctor_id());
         setItemsInTableView(listOfVisit);
     }
 
-    private void setItemsInTableView(ArrayList<DoctorVisitTable> arrayList) {
+    private void setItemsInTableView(List<DoctorVisitTable> arrayList) {
         ObservableList<DoctorVisitTable> doctorVisitTableList = FXCollections.observableArrayList(arrayList);
         firstNameTable.setCellValueFactory(new PropertyValueFactory<>("firstNamePatient"));
         lastNameTable.setCellValueFactory(new PropertyValueFactory<>("lastNamePatient"));
         specializationTable.setCellValueFactory(new PropertyValueFactory<>("specialization"));
         dateTable.setCellValueFactory(new PropertyValueFactory<>("dateOfVisit"));
         table.setItems(doctorVisitTableList);
+    }
+
+    public void deleteReservationAction() {
+        DoctorVisitTable doctorVisitTable = table.getSelectionModel().getSelectedItem();
+        VisitDao.getInstance().deleteVisit(doctorVisitTable.getId());
+        setVisitTable();
     }
 }

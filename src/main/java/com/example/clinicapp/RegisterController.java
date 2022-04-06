@@ -71,8 +71,7 @@ public class RegisterController {
     private void createNewPatientAccount() {
         Patient newPatient = new Patient();
         writeToPatientObject(newPatient);
-        PatientDao patientDao = new PatientDao();
-        patientDao.addNewPatient(newPatient);
+        PatientDao.getInstance().addNewPatient(newPatient);
     }
 
     private void writeToPatientObject(Patient newPatient) {

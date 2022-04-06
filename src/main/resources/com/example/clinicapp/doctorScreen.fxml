@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<?import javafx.scene.control.Button?>
-<Pane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="doctor.DoctorController">
+<Pane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="doctor.DoctorController">
    <children>
       <Label layoutX="532.0" layoutY="108.0" text="WELCOME DOCTOR">
          <font>
@@ -24,5 +21,6 @@
        <Button fx:id="closeButton" layoutX="1850.0" layoutY="8.0" mnemonicParsing="false" onAction="#closeButtonAction" prefHeight="62.0" prefWidth="64.0" text="EXIT">
        </Button>
        <Button layoutX="1756.0" layoutY="8.0" mnemonicParsing="false" onAction="#logOutButtonAction" prefHeight="62.0" prefWidth="79.0" text="LOG OUT" />
+      <Button fx:id="deleteReservationButton" layoutX="605.0" layoutY="660.0" mnemonicParsing="false" onAction="#deleteReservationAction" text="Delete reservation" />
    </children>
 </Pane>

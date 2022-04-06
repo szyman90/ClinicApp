@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<Pane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.clinicapp.PatientController">
+<Pane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.clinicapp.PatientController">
    <children>
       <TableView fx:id="table" layoutX="625.0" layoutY="340.0" prefHeight="200.0" prefWidth="408.0">
         <columns>
@@ -19,7 +14,7 @@
             <TableColumn fx:id="visitDateColumn" prefWidth="127.0" text="Date of the visit" />
         </columns>
       </TableView>
-      <Label fx:id="welcomeLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="725.0" layoutY="43.0" text="WELCOME KTOS" textAlignment="CENTER">
+      <Label fx:id="welcomeLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="725.0" layoutY="43.0" text="WELCOME SOMEONE" textAlignment="CENTER">
          <font>
             <Font size="48.0" />
          </font>
@@ -34,7 +29,7 @@
             <DatePicker fx:id="datePicker" layoutX="325.0" layoutY="170.0" onAction="#takeSelectedDate" />
             <Button fx:id="addNewVisitButton" layoutX="376.0" layoutY="281.0" mnemonicParsing="false" onAction="#addNewVisitAction" text="Add new visit" />
          </children></Pane>
-      <Pane layoutX="111.0" layoutY="294.0" prefHeight="650.0" prefWidth="650.0">
+      <Pane layoutX="111.0" layoutY="294.0" prefHeight="650.0" prefWidth="496.0">
          <children>
             <Label layoutX="234.0" layoutY="44.0" text="PERSONAL DATA">
                <font>
@@ -56,9 +51,9 @@
             <Label fx:id="flatNumberLabel" layoutX="325.0" layoutY="415.0" text="Label" />
          </children>
       </Pane>
-      <Button fx:id="closeButton" layoutX="1850.0" layoutY="8.0" mnemonicParsing="false" onAction="#closeButtonAction" prefHeight="62.0" prefWidth="64.0" text="EXIT">
-      </Button>
+      <Button fx:id="closeButton" layoutX="1850.0" layoutY="8.0" mnemonicParsing="false" onAction="#closeButtonAction" prefHeight="62.0" prefWidth="64.0" text="EXIT"/>
       <Button fx:id="logOutButton" layoutX="1756.0" layoutY="8.0" mnemonicParsing="false" onAction="#logOutButtonAction" prefHeight="62.0" prefWidth="79.0" text="LOG OUT" />
       <Button fx:id="makeReservationButton" layoutX="921.0" layoutY="561.0" mnemonicParsing="false" onAction="#makeReservationAction" text="Make reservation" />
+      <Button fx:id="deleteReservationButton" layoutX="625.0" layoutY="561.0" mnemonicParsing="false" onAction="#deleteReservationAction" text="Delete reservation" />
    </children>
 </Pane>
