@@ -13,4 +13,12 @@ module com.example.clinicapp {
     exports visit;
     opens doctor to javafx.fxml, org.hibernate.orm.core;
     opens visit to javafx.fxml, org.hibernate.orm.core;
+    exports patient;
+    opens patient to javafx.fxml, org.hibernate.orm.core;
+    exports register;
+    opens register to javafx.fxml, org.hibernate.orm.core;
+    exports visitTables;
+    opens visitTables to javafx.fxml, org.hibernate.orm.core;
+    exports util;
+    opens util to javafx.fxml, org.hibernate.orm.core;
 }

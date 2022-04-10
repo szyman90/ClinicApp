@@ -1,6 +1,6 @@
 package visit;
 
-import com.example.clinicapp.Patient;
+import patient.Patient;
 import doctor.Doctor;
 import lombok.Getter;
 import lombok.Setter;

@@ -1,4 +1,4 @@
-package com.example.clinicapp;
+package register;
 
 import javafx.scene.control.TextField;
 import org.apache.commons.validator.routines.EmailValidator;

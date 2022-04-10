@@ -1,5 +1,7 @@
-package com.example.clinicapp;
+package patient;
 
+import com.example.clinicapp.MainController;
+import visitTables.PatientVisitTable;
 import doctor.Doctor;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -84,11 +86,19 @@ public class PatientController {
         this.mainController = mainController;
     }
 
-    public void setPatient(Patient patient) {
+    public void setPatientScreen(Patient patient) {
         this.patient = patient;
         welcomeLabel.setText("Welcome " + patient.getFirstName());
         setPersonalData();
         setVisitTable();
+        datePicker.setDayCellFactory(picker -> new DateCell() {
+            public void updateItem(LocalDate date, boolean empty) {
+                super.updateItem(date, empty);
+                LocalDate today = LocalDate.now();
+
+                setDisable(empty || date.compareTo(today) < 0 );
+            }
+        });
         addVisitPane.setVisible(false);
         addNewVisitButton.setVisible(false);
     }
@@ -118,7 +128,7 @@ public class PatientController {
     }
 
     private void setVisitTable() {
-        List<PatientVisitTable> listOfVisit = VisitDao.getInstance().getPatientVisitsToTable(patient.getPatientId());
+        List<PatientVisitTable> listOfVisit = PatientDao.getInstance().getVisitsToTable(patient.getPatientId());
         setItemsInTableView(listOfVisit);
     }
 
@@ -207,6 +217,3 @@ public class PatientController {
     }
 
 }
-
-//TODO option for cancel visit
-//TODO don't let users make reservation in the past

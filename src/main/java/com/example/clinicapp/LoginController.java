@@ -1,17 +1,20 @@
 package com.example.clinicapp;
 
+import util.DialogWindows;
 import doctor.Doctor;
 import doctor.DoctorController;
 import doctor.DoctorDao;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import patient.Patient;
+import patient.PatientController;
+import patient.PatientDao;
+import register.RegisterController;
 
 import java.io.IOException;
 
@@ -52,10 +55,6 @@ public class LoginController {
         this.mainController = mainController;
     }
 
-    public MainController getMainController() {
-        return mainController;
-    } // ale po co
-
     public void verifyLoginData() {
         String email = emailField.getText();
         String password = passwordField.getText();
@@ -68,6 +67,7 @@ public class LoginController {
 
     private void verifyForPatient(String email, String password) {
         try {
+
             Patient patient = PatientDao.getInstance().loginAndPasswordCheck(email, password);
             patientScreenEnable(patient);
         } catch (NullPointerException e) {
@@ -94,7 +94,7 @@ public class LoginController {
         }
         DoctorController doctorController = loader.getController();
         doctorController.setMainController(mainController);
-        doctorController.setDoctor(doctor);
+        doctorController.setDoctorScreen(doctor);
         mainController.setScreen(pane);
     }
 
@@ -108,7 +108,7 @@ public class LoginController {
         }
         PatientController patientController = loader.getController();
         patientController.setMainController(mainController);
-        patientController.setPatient(patient);
+        patientController.setPatientScreen(patient);
         mainController.setScreen(pane);
     }
 }

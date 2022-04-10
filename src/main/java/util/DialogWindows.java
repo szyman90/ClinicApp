@@ -1,4 +1,4 @@
-package com.example.clinicapp;
+package util;
 
 import javafx.scene.control.Alert;
 

@@ -1,10 +1,14 @@
-package com.example.clinicapp;
+package register;
 
+import util.DialogWindows;
+import com.example.clinicapp.MainController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import patient.Patient;
+import patient.PatientDao;
 
 public class RegisterController {
 
@@ -20,7 +24,6 @@ public class RegisterController {
     public TextField firstNameField;
     public Button closeButton;
 
-    //TODO add city etc.
     @FXML
     public void CloseButtonAction() {
         Stage stage = (Stage) closeButton.getScene().getWindow();
@@ -40,7 +43,6 @@ public class RegisterController {
         }
     }
 
-    // @SuppressWarnings
     public boolean fieldValidationCheck() {
         RegisterValidator registerValidator = new RegisterValidator();
         StringBuilder errorMessageString = new StringBuilder();

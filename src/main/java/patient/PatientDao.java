@@ -1,11 +1,15 @@
-package com.example.clinicapp;
+package patient;
 
+import com.example.clinicapp.UserDao;
 import doctor.Doctor;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import util.HibernateUtil;
+import visit.Visit;
+import visitTables.PatientVisitTable;
 
 import javax.persistence.NoResultException;
 import java.sql.Timestamp;
@@ -13,7 +17,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PatientDao {
+public class PatientDao implements UserDao<Patient, PatientVisitTable> {
     private static PatientDao instance;
 
     private PatientDao() {}
@@ -35,6 +39,8 @@ public class PatientDao {
     public Patient loginAndPasswordCheck(String email, String password) {
         Patient patient;
         try {
+            if(email.equals("") || password.equals(""))
+                return null;
             SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
             Session session = sessionFactory.openSession();
             session.beginTransaction();
@@ -90,6 +96,35 @@ public class PatientDao {
         }
         session.close();
         return visitsOnSelectedDayList;
+    }
+
+    public List<PatientVisitTable> getVisitsToTable(int patientId) {
+        List<Visit> listOfVisit = getAllPatientVisitsFromDB(patientId);
+        return convertVisitToPatientVisitTable(listOfVisit);
+    }
+
+    private List<PatientVisitTable> convertVisitToPatientVisitTable(List<Visit> listOfVisit) {
+        List<PatientVisitTable> arrayListForTable = new ArrayList<>();
+        for (Visit visit : listOfVisit) {
+            PatientVisitTable patientVisitTable = new PatientVisitTable();
+            patientVisitTable.setFirstNameDoctor(visit.getDoctor().getFirstName());
+            patientVisitTable.setLastNameDoctor(visit.getDoctor().getLastName());
+            patientVisitTable.setSpecialization(visit.getDoctor().getSpecialisation());
+            patientVisitTable.setDateOfVisit(visit.getVisitDate());
+            patientVisitTable.setId(visit.getVisitId());
+            arrayListForTable.add(patientVisitTable);
+        }
+        return arrayListForTable;
+    }
+
+
+    @SuppressWarnings("unchecked")
+    private List<Visit> getAllPatientVisitsFromDB(int patientId) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        List<Visit> resultList = (ArrayList<Visit>) session.createQuery("select c from Visit c" +
+                " WHERE c.patient.patientId = :patientId").setParameter("patientId", patientId).getResultList();
+        session.close();
+        return resultList;
     }
 
 }

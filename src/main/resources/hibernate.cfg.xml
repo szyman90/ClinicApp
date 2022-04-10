@@ -12,7 +12,6 @@
         <property name="hibernate.connection.username">postgres</property>
         <property name="hibernate.connection.password">password</property>
         <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
-        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
         <property name="format_sql">true</property>
         <!-- Print executed SQL to stdout -->
         <property name="show_sql">true</property>
@@ -20,7 +19,7 @@
         <property name="hbm2ddl.auto">update</property>
         <!-- Annotated entity classes -->
         <mapping class="visit.Visit"/>
-        <mapping class="com.example.clinicapp.Patient"/>
+        <mapping class="patient.Patient"/>
         <mapping class="doctor.Doctor"/>
 
 

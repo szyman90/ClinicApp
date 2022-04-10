@@ -1,4 +1,4 @@
-package com.example.clinicapp;
+package patient;
 import lombok.*;
 import javax.persistence.*;
 
@@ -25,6 +25,7 @@ public class    Patient {
     @Column(name="house_number")
     private String houseNumber;
     @Column(name="flat_number")
+    //TODO Optional?
     private String flatNumber;
     @Column(name="password")
     private String password;

@@ -1,4 +1,4 @@
-package com.example.clinicapp;
+package visitTables;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -6,10 +6,10 @@ import lombok.Setter;
 import java.sql.Timestamp;
 @Getter
 @Setter
-public class PatientVisitTable {
+public class DoctorVisitTable {
     int id;
-    String firstNameDoctor;
-    String lastNameDoctor;
+    String firstNamePatient;
+    String lastNamePatient;
     String specialization;
     Timestamp dateOfVisit;
 }

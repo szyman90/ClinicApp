@@ -1,4 +1,4 @@
-package com.example.clinicapp;
+package util;
 
 import org.hibernate.SessionFactory;
 
